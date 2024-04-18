@@ -31,7 +31,7 @@ class launchPage(BaseDriver):
     
     def __init__(self, driver):
         super().__init__(driver)
-        self.driver = driver
+        # self.driver = driver
         # self.wait = wait
 
     def get_page_title(self):
@@ -94,6 +94,15 @@ class launchPage(BaseDriver):
         click_search_element = self.wait_until_element_is_clickable(By.XPATH, self.srch_btn_xpath)
         click_search_element.click()
         # self.wait.until(EC.element_to_be_clickable((By.XPATH, self.srch_btn_xpath))).click()
+        
+        
+    def searchFlights(self, departlocation, gointolocation, departuredate):
+        self.depart_from(departlocation)
+        self.going_to(gointolocation)
+        self.calender(departuredate)    
+        self.click_search()
+        
+        
         
         
           

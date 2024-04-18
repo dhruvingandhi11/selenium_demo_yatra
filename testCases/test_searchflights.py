@@ -20,18 +20,18 @@ class Test005_searchFlights():
         print(f"{url=}")
         
         lp = launchPage(self.driver)
-        lp.depart_from()
-        lp.going_to()
-        lp.calender("22/04/2024")
-        lp.click_search()
+        lp.searchFlights("singap", "duba", "22/04/2024")
+        time.sleep(5)
+        
         lp.page_scroll()
         
         
         sf = SearchFlightsResultPage(self.driver)
-        sf.filter_flight()
+        sf.filter_flight_by_stop(by_stop="1 Stop")
         
-        all_stops1 = lp.wait_for_presence_of_all_elements(By.XPATH, 
-                                             "//span[contains(text(),'Non Stop') or contains(text(),'1 Stop') or contains(text(),'2 Stop')]")
+        
+        all_stops1 = sf.get_search_flights_result()
+        
         print(f"{len(all_stops1)=}")
         
         ut = Utils()
