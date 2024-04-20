@@ -9,7 +9,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from webdriver_manager.chrome import ChromeDriverManager
 
-@pytest.fixture(scope="class")
+# @pytest.fixture(scope="class")
+@pytest.fixture(autouse=True, scope="class")
 def setup(request):
     chrome_options = Options()
     chrome_options.add_experimental_option("detach", True)
@@ -24,6 +25,6 @@ def setup(request):
     
     request.cls.driver = driver
     # request.cls.wait = wait
-    #yield
-    #driver.close()    
+    yield
+    driver.close()    
     

@@ -6,6 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from base.base_driver import BaseDriver
 import time
 
+from pageObjects.search_flights_result_page import SearchFlightsResultPage
+
 class launchPage(BaseDriver):
     textbox_username_id = "Email"
     textbox_password_id = "Password"
@@ -101,6 +103,8 @@ class launchPage(BaseDriver):
         self.going_to(gointolocation)
         self.calender(departuredate)    
         self.click_search()
+        search_flights_result = SearchFlightsResultPage(self.driver)
+        return search_flights_result
         
         
         
